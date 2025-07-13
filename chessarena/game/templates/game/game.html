@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Game {{ game.id }}</h1>
+<div id="board">Board goes here</div>
+<script>
+const socket = new WebSocket("ws://" + window.location.host + "/ws/game/{{ game.id }}/");
+socket.onmessage = function(e){console.log(e.data);}
+</script>
+{% endblock %}
